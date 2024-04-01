@@ -9,8 +9,7 @@
         "userInterfaceStyle": "automatic",
         "splash": {
             "image": "./assets/images/splash.png",
-            "resizeMode": "contain",
-            "backgroundColor": "#ffffff"
+            "resizeMode": "cover"
         },
         "assetBundlePatterns": ["**/*"],
         "ios": {
@@ -19,7 +18,7 @@
         "android": {
             "adaptiveIcon": {
                 "foregroundImage": "./assets/images/adaptive-icon.png",
-                "backgroundColor": "#ffffff"
+                "backgroundColor": "#f48f56"
             }
         },
         "web": {
