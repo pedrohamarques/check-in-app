@@ -3,6 +3,8 @@ import { Image, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { Input } from "@components/input";
+import { Button } from "@components/button";
+
 import { colors } from "@styles/colors";
 
 export default function Home() {
@@ -23,6 +25,7 @@ export default function Home() {
                     />
                     <Input.Field placeholder='Código de acesso' />
                 </Input>
+                <Button title='Acessar credencial' />
             </View>
         </View>
     );
