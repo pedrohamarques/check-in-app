@@ -1,5 +1,5 @@
 import React from "react";
-import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Text, TouchableOpacity } from "react-native";
 
 import type { TouchableOpacityProps } from "react-native";
 
@@ -20,16 +20,15 @@ export function Button({
             testID={testID}
             disabled={isLoading}
             activeOpacity={0.7}
+            className='w-full h-14 bg-orange-500 items-center justify-center rounded-lg'
             {...rest}>
-            <View className='w-full h-14 bg-orange-500 items-center justify-center rounded-lg'>
-                {isLoading ? (
-                    <ActivityIndicator className='text-green-500' />
-                ) : (
-                    <Text className='text-green-500 text-base font-bold uppercase'>
-                        {title}
-                    </Text>
-                )}
-            </View>
+            {isLoading ? (
+                <ActivityIndicator className='text-green-500' />
+            ) : (
+                <Text className='text-green-500 text-base font-bold uppercase'>
+                    {title}
+                </Text>
+            )}
         </TouchableOpacity>
     );
 }
