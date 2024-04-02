@@ -9,15 +9,18 @@ import {
 import { Feather } from "@expo/vector-icons";
 
 import { colors } from "@styles/colors";
+import { QrCode } from "@components/qrcode";
 
 type CredentialProps = {
     image?: string;
-    onChangeAvatar: () => void;
     testID?: string;
+    onChangeAvatar: () => void;
+    onShowQrCode: () => void;
 };
 
 export function Credential({
     onChangeAvatar,
+    onShowQrCode,
     image,
     testID = "components.credential",
 }: CredentialProps) {
@@ -74,12 +77,16 @@ export function Credential({
                     pedrohenrique_1992@hotmail.com
                 </Text>
 
-                <Image
-                    source={require("@assets/ticket/qrcode.png")}
-                    className='w-32 h-32'
+                <QrCode
+                    testID='components.credential.qrcode'
+                    value='teste'
+                    size={120}
                 />
 
-                <TouchableOpacity activeOpacity={0.7} className='mt-6'>
+                <TouchableOpacity
+                    activeOpacity={0.7}
+                    className='mt-6'
+                    onPress={onShowQrCode}>
                     <Text className='font-bold text-orange-500 text-sm'>
                         Ampliar QRCode
                     </Text>

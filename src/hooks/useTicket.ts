@@ -4,6 +4,7 @@ import { Alert } from "react-native";
 
 export function useTicket() {
     const [image, setImage] = useState("");
+    const [expandQRCode, setExpandQRCode] = useState(false);
 
     async function handleSelectImage() {
         try {
@@ -25,5 +26,7 @@ export function useTicket() {
     return {
         image,
         handleSelectImage,
+        setExpandQRCode,
+        expandQRCode,
     };
 }
