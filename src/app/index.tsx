@@ -8,7 +8,10 @@ import { Button } from "@components/button";
 
 import { colors } from "@styles/colors";
 
+import { useHome } from "@hooks/useHome";
+
 export default function Home() {
+    const { setCode, handleAccessCredentials, code } = useHome();
     return (
         <View className='bg-green-500 flex-1 items-center justify-center p-8'>
             <Image
@@ -24,13 +27,19 @@ export default function Home() {
                         size={20}
                         color={colors.green[200]}
                     />
-                    <Input.Field placeholder='Código de acesso' />
+                    <Input.Field
+                        placeholder='Código de acesso'
+                        onChangeText={setCode}
+                    />
                 </Input>
-                <Button title='Acessar credencial' />
+                <Button
+                    title='Acessar credencial'
+                    onPress={handleAccessCredentials}
+                />
                 <Link
                     href='/register'
                     className='text-gray-100 text-base font-bold text-center mt-8'>
-                    Ainda não possui ingresso?
+                    Ainda não possui ingresso? {code}
                 </Link>
             </View>
         </View>
