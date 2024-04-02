@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Alert } from "react-native";
+import { router } from "expo-router";
 
 export function useRegister() {
     const [name, setName] = useState("");
@@ -9,7 +10,9 @@ export function useRegister() {
         if (!name.trim() || !email.trim()) {
             Alert.alert("Inscrição", "Preencha todos os campos!");
         }
+        router.push("/ticket");
     }
+
     return {
         handleRegister,
         setName,
