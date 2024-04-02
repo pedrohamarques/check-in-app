@@ -1,14 +1,14 @@
 import React from "react";
 import { Image, View } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Link } from "expo-router";
+import { FontAwesome6, MaterialIcons } from "@expo/vector-icons";
 
-import { Input } from "@components/input";
 import { Button } from "@components/button";
+import { Input } from "@components/input";
 
 import { colors } from "@styles/colors";
 
-export default function Home() {
+export default function Register() {
     return (
         <View className='bg-green-500 flex-1 items-center justify-center p-8'>
             <Image
@@ -19,18 +19,29 @@ export default function Home() {
 
             <View className='w-full mt-12 gap-3'>
                 <Input>
-                    <MaterialCommunityIcons
-                        name='ticket-confirmation-outline'
+                    <FontAwesome6
+                        name='user-circle'
                         size={20}
                         color={colors.green[200]}
                     />
-                    <Input.Field placeholder='Código de acesso' />
+                    <Input.Field placeholder='Nome completo' />
                 </Input>
-                <Button title='Acessar credencial' />
+                <Input>
+                    <MaterialIcons
+                        name='alternate-email'
+                        size={20}
+                        color={colors.green[200]}
+                    />
+                    <Input.Field
+                        placeholder='E-mail'
+                        keyboardType='email-address'
+                    />
+                </Input>
+                <Button title='Realizar inscrição' />
                 <Link
-                    href='/register'
+                    href='/'
                     className='text-gray-100 text-base font-bold text-center mt-8'>
-                    Ainda não possui ingresso?
+                    Já possui ingresso?
                 </Link>
             </View>
         </View>
