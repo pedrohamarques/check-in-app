@@ -44,7 +44,11 @@ export default function Register() {
                         onChangeText={setEmail}
                     />
                 </Input>
-                <Button title='Realizar inscrição' onPress={handleRegister} />
+                <Button
+                    title='Realizar inscrição'
+                    onPress={handleRegister}
+                    testID='app.register.button'
+                />
                 <Link
                     href='/'
                     className='text-gray-100 text-base font-bold text-center mt-8'>
