@@ -7,8 +7,10 @@ import { Header } from "@components/header";
 import { Button } from "@components/button";
 
 import { colors } from "@styles/colors";
+import { useTicket } from "@hooks/useTicket";
 
 export default function Ticket() {
+    const { handleSelectImage, image } = useTicket();
     return (
         <View className='flex-1 bg-green-500'>
             <Header title='Minha credencial' />
@@ -16,7 +18,7 @@ export default function Ticket() {
                 className='-mt-28 -z-10'
                 contentContainerClassName='px-8 pb-8'
                 showsVerticalScrollIndicator={false}>
-                <Credential />
+                <Credential image={image} onChangeAvatar={handleSelectImage} />
 
                 <FontAwesome
                     name='angle-double-down'
