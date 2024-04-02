@@ -8,7 +8,10 @@ import { Input } from "@components/input";
 
 import { colors } from "@styles/colors";
 
+import { useRegister } from "@hooks/useRegister";
+
 export default function Register() {
+    const { handleRegister, setEmail, setName } = useRegister();
     return (
         <View className='bg-green-500 flex-1 items-center justify-center p-8'>
             <Image
@@ -24,7 +27,10 @@ export default function Register() {
                         size={20}
                         color={colors.green[200]}
                     />
-                    <Input.Field placeholder='Nome completo' />
+                    <Input.Field
+                        placeholder='Nome completo'
+                        onChangeText={setName}
+                    />
                 </Input>
                 <Input>
                     <MaterialIcons
@@ -35,9 +41,10 @@ export default function Register() {
                     <Input.Field
                         placeholder='E-mail'
                         keyboardType='email-address'
+                        onChangeText={setEmail}
                     />
                 </Input>
-                <Button title='Realizar inscrição' />
+                <Button title='Realizar inscrição' onPress={handleRegister} />
                 <Link
                     href='/'
                     className='text-gray-100 text-base font-bold text-center mt-8'>
