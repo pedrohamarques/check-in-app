@@ -81,7 +81,8 @@ export function Credential({
                 {image ? (
                     <TouchableOpacity
                         activeOpacity={0.9}
-                        onPress={onChangeAvatar}>
+                        onPress={onChangeAvatar}
+                        testID='components.credential.touchable-image'>
                         <Image
                             source={{
                                 uri: image,
@@ -93,7 +94,8 @@ export function Credential({
                     <TouchableOpacity
                         activeOpacity={0.9}
                         className='w-36 h-36 rounded-full -mt-24 items-center justify-center bg-gray-400'
-                        onPress={onChangeAvatar}>
+                        onPress={onChangeAvatar}
+                        testID='components.credential.touchable-camera'>
                         <Feather
                             name='camera'
                             color={colors.green[400]}
