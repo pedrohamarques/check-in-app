@@ -11,7 +11,7 @@ import { colors } from "@styles/colors";
 import { useRegister } from "@hooks/useRegister";
 
 export default function Register() {
-    const { handleRegister, setEmail, setName } = useRegister();
+    const { handleRegister, setEmail, setName, isLoading } = useRegister();
     return (
         <View className='bg-green-500 flex-1 items-center justify-center p-8'>
             <Image
@@ -48,6 +48,7 @@ export default function Register() {
                     title='Realizar inscrição'
                     onPress={handleRegister}
                     testID='app.register.button'
+                    isLoading={isLoading}
                 />
                 <Link
                     href='/'
