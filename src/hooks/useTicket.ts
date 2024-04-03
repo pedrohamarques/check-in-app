@@ -2,9 +2,13 @@ import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import { Alert } from "react-native";
 
+import { useBadgeStore } from "@stores/badge-store";
+
 export function useTicket() {
     const [image, setImage] = useState("");
     const [expandQRCode, setExpandQRCode] = useState(false);
+
+    const badgeStore = useBadgeStore();
 
     async function handleSelectImage() {
         try {
@@ -23,10 +27,16 @@ export function useTicket() {
         }
     }
 
+    function handleRemoveCredentials() {
+        badgeStore.remove();
+    }
+
     return {
         image,
         handleSelectImage,
         setExpandQRCode,
+        handleRemoveCredentials,
         expandQRCode,
+        badgeStore,
     };
 }

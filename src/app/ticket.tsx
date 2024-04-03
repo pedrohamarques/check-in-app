@@ -9,10 +9,22 @@ import { QrCode } from "@components/qrcode";
 
 import { colors } from "@styles/colors";
 import { useTicket } from "@hooks/useTicket";
+import { Redirect } from "expo-router";
 
 export default function Ticket() {
-    const { handleSelectImage, setExpandQRCode, image, expandQRCode } =
-        useTicket();
+    const {
+        handleSelectImage,
+        setExpandQRCode,
+        image,
+        expandQRCode,
+        handleRemoveCredentials,
+        badgeStore,
+    } = useTicket();
+
+    if (!badgeStore.data?.checkInURL) {
+        return <Redirect href={"/"} />;
+    }
+
     return (
         <View className='flex-1 bg-green-500'>
             <Header title='Minha credencial' testID='app.ticket.header' />
@@ -43,7 +55,10 @@ export default function Ticket() {
 
                 <Button title='Compartilhar' testID='app.ticket.button' />
 
-                <TouchableOpacity activeOpacity={0.7} className='mt-10'>
+                <TouchableOpacity
+                    activeOpacity={0.7}
+                    className='mt-10'
+                    onPress={handleRemoveCredentials}>
                     <Text className='text-base text-white font-bold text-center'>
                         Remover ingresso
                     </Text>
