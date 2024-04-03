@@ -35,9 +35,18 @@ export function useRegister() {
             const { attendeeId } = registerResponse.data;
 
             if (attendeeId) {
-                const badgeResponse = await api.get(`attendees/${attendeeId}`);
+                const badgeResponse = await api.get(
+                    `attendees/${attendeeId}/badge`,
+                );
+                const { badge } = badgeResponse.data;
 
-                badgeStore.save(badgeResponse.data.badge);
+                badgeStore.save({
+                    checkInURL: badge.checkInURL,
+                    email: badge.email,
+                    name: badge.name,
+                    id: attendeeId,
+                    eventTitle: badge.eventTitle,
+                });
 
                 Alert.alert("Inscrição", "Inscrição realizada com sucesso!", [
                     { text: "Ok", onPress: () => router.push("/ticket") },
