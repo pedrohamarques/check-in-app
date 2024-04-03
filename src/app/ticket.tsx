@@ -15,7 +15,6 @@ export default function Ticket() {
     const {
         handleSelectImage,
         setExpandQRCode,
-        image,
         expandQRCode,
         handleRemoveCredentials,
         badgeStore,
@@ -33,10 +32,11 @@ export default function Ticket() {
                 contentContainerClassName='px-8 pb-8'
                 showsVerticalScrollIndicator={false}>
                 <Credential
-                    image={image}
+                    image={badgeStore.data.image}
                     onChangeAvatar={handleSelectImage}
                     testID='app.ticket.credential'
                     onShowQrCode={() => setExpandQRCode(true)}
+                    credentialData={badgeStore.data}
                 />
 
                 <FontAwesome

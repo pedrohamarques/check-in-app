@@ -5,7 +5,6 @@ import { Alert } from "react-native";
 import { useBadgeStore } from "@stores/badge-store";
 
 export function useTicket() {
-    const [image, setImage] = useState("");
     const [expandQRCode, setExpandQRCode] = useState(false);
 
     const badgeStore = useBadgeStore();
@@ -19,7 +18,7 @@ export function useTicket() {
             });
 
             if (result.assets) {
-                setImage(result.assets[0].uri);
+                badgeStore.updateAvatar(result.assets[0].uri);
             }
         } catch (error) {
             console.log(error);
@@ -32,7 +31,6 @@ export function useTicket() {
     }
 
     return {
-        image,
         handleSelectImage,
         setExpandQRCode,
         handleRemoveCredentials,

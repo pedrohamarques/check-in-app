@@ -9,11 +9,15 @@ import {
 import { Feather } from "@expo/vector-icons";
 
 import { colors } from "@styles/colors";
+
 import { QrCode } from "@components/qrcode";
+
+import { BadgeStore } from "@stores/badge-store";
 
 type CredentialProps = {
     image?: string;
     testID?: string;
+    credentialData: BadgeStore;
     onChangeAvatar: () => void;
     onShowQrCode: () => void;
 };
@@ -23,6 +27,7 @@ export function Credential({
     onShowQrCode,
     image,
     testID = "components.credential",
+    credentialData,
 }: CredentialProps) {
     return (
         <View className='w-full self-stretch items-center' testID={testID}>
@@ -37,10 +42,10 @@ export function Credential({
                     className='px-6 py-8 h-40 items-center self-stretch border-b border-white/10 overflow-hidden'>
                     <View className='w-full flex-row items-center justify-between'>
                         <Text className='text-zinc-50 text-sm font-bold'>
-                            Unite summit
+                            {credentialData.eventTitle}
                         </Text>
                         <Text className='text-zinc-50 text-sm font-bold'>
-                            #123
+                            #{credentialData.id}
                         </Text>
                     </View>
 
@@ -71,10 +76,10 @@ export function Credential({
                 )}
 
                 <Text className='font-bold text-2xl text-zinc-50 mt-4'>
-                    Pedro Almeida
+                    {credentialData.name}
                 </Text>
                 <Text className='font-regular text-base text-zinc-300 mb-4'>
-                    pedrohenrique_1992@hotmail.com
+                    {credentialData.email}
                 </Text>
 
                 <QrCode
