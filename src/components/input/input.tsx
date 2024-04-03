@@ -5,9 +5,15 @@ import { colors } from "@styles/colors";
 
 import type { TextInputProps } from "react-native";
 
-function Input({ children }: React.PropsWithChildren) {
+type InputProps = React.PropsWithChildren & {
+    testID?: string;
+};
+
+function Input({ testID = "components.input", children }: InputProps) {
     return (
-        <View className='w-full h-14 flex-row items-center gap-3 p-3 border border-green-400 rounded-lg'>
+        <View
+            className='w-full h-14 flex-row items-center gap-3 p-3 border border-green-400 rounded-lg'
+            testID={testID}>
             {children}
         </View>
     );
