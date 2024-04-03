@@ -1,6 +1,6 @@
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
-import { Alert } from "react-native";
+import { Alert, Share } from "react-native";
 
 import { useBadgeStore } from "@stores/badge-store";
 
@@ -30,10 +30,24 @@ export function useTicket() {
         badgeStore.remove();
     }
 
+    async function handleShare() {
+        try {
+            if (badgeStore.data?.checkInURL) {
+                await Share.share({
+                    message: badgeStore.data.checkInURL,
+                });
+            }
+        } catch (error) {
+            console.log(error);
+            Alert.alert("Compartilhar", "Não foi possível compartilhar");
+        }
+    }
+
     return {
         handleSelectImage,
         setExpandQRCode,
         handleRemoveCredentials,
+        handleShare,
         expandQRCode,
         badgeStore,
     };

@@ -18,6 +18,7 @@ export default function Ticket() {
         expandQRCode,
         handleRemoveCredentials,
         badgeStore,
+        handleShare,
     } = useTicket();
 
     if (!badgeStore.data?.checkInURL) {
@@ -50,10 +51,15 @@ export default function Ticket() {
                     Compartilhar credencial
                 </Text>
                 <Text className='text-white font-regular text-base mt-1 mb-6'>
-                    Mostre ao mundo que você vai particiapr do Unite Summit!
+                    Mostre ao mundo que você vai participar do{" "}
+                    {badgeStore.data.eventTitle}!
                 </Text>
 
-                <Button title='Compartilhar' testID='app.ticket.button' />
+                <Button
+                    title='Compartilhar'
+                    testID='app.ticket.button'
+                    onPress={handleShare}
+                />
 
                 <TouchableOpacity
                     activeOpacity={0.7}
