@@ -23,7 +23,13 @@ export function useHome() {
             setIsLoading(true);
 
             const response = await api.get(`/attendees/${code}/badge`);
-            badgeStore.save(response.data.badge);
+            badgeStore.save({
+                checkInURL: response.data.badge.checkInURL,
+                email: response.data.badge.email,
+                name: response.data.badge.name,
+                eventTitle: response.data.badge.eventTitle,
+                id: code,
+            });
         } catch (error) {
             console.log(error);
             setIsLoading(false);
