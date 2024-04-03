@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Link } from "expo-router";
+import { Link, Redirect } from "expo-router";
 
 import { Input } from "@components/input";
 import { Button } from "@components/button";
@@ -11,7 +11,13 @@ import { colors } from "@styles/colors";
 import { useHome } from "@hooks/useHome";
 
 export default function Home() {
-    const { setCode, handleAccessCredentials, code } = useHome();
+    const { setCode, handleAccessCredentials, isLoading, badgeStore } =
+        useHome();
+
+    if (badgeStore.data?.checkInURL) {
+        return <Redirect href={"/ticket"} />;
+    }
+
     return (
         <View className='bg-green-500 flex-1 items-center justify-center p-8'>
             <Image
@@ -35,11 +41,13 @@ export default function Home() {
                 <Button
                     title='Acessar credencial'
                     onPress={handleAccessCredentials}
+                    isLoading={isLoading}
+                    testID='app.button'
                 />
                 <Link
                     href='/register'
                     className='text-gray-100 text-base font-bold text-center mt-8'>
-                    Ainda não possui ingresso? {code}
+                    Ainda não possui ingresso?
                 </Link>
             </View>
         </View>
