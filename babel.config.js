@@ -16,6 +16,7 @@ module.exports = function (api) {
                         "@typings": "./src/typings",
                         "@components": "./src/components",
                         "@hooks": "./src/hooks",
+                        "@services": "./src/services",
                     },
                 },
             ],
