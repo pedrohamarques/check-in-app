@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, View, ScrollView, TouchableOpacity, Modal } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { MotiView } from "moti";
 
 import { Credential } from "@components/credential";
 import { Header } from "@components/header";
@@ -40,12 +41,17 @@ export default function Ticket() {
                     credentialData={badgeStore.data}
                 />
 
-                <FontAwesome
-                    name='angle-double-down'
-                    size={24}
-                    color={colors.gray[300]}
-                    className='self-center my-6'
-                />
+                <MotiView
+                    from={{ translateY: 0 }}
+                    animate={{ translateY: 10 }}
+                    transition={{ loop: true, type: "timing", duration: 700 }}>
+                    <FontAwesome
+                        name='angle-double-down'
+                        size={24}
+                        color={colors.gray[300]}
+                        className='self-center my-6'
+                    />
+                </MotiView>
 
                 <Text className='text-white font-bold text-2xl mt-4'>
                     Compartilhar credencial
