@@ -17,13 +17,13 @@ export function useRegister() {
     const badgeStore = useBadgeStore();
 
     async function handleRegister() {
+        if (!name.trim() || !email.trim()) {
+            Alert.alert("Inscrição", "Preencha todos os campos!");
+        }
+
+        setIsLoading(true);
+
         try {
-            if (!name.trim() || !email.trim()) {
-                Alert.alert("Inscrição", "Preencha todos os campos!");
-            }
-
-            setIsLoading(true);
-
             const registerResponse = await api.post(
                 `/events/${EVENT_ID}/attendees`,
                 {

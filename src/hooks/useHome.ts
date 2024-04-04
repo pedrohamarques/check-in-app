@@ -12,16 +12,16 @@ export function useHome() {
     const badgeStore = useBadgeStore();
 
     async function handleAccessCredentials() {
+        if (!code.trim()) {
+            return Alert.alert(
+                "Credencial",
+                "Informe o credencial do ingresso!",
+            );
+        }
+
+        setIsLoading(true);
+
         try {
-            if (!code.trim()) {
-                return Alert.alert(
-                    "Credencial",
-                    "Informe o credencial do ingresso!",
-                );
-            }
-
-            setIsLoading(true);
-
             const response = await api.get(`/attendees/${code}/badge`);
             badgeStore.save({
                 checkInURL: response.data.badge.checkInURL,
