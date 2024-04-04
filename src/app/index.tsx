@@ -15,7 +15,11 @@ export default function Home() {
         useHome();
 
     if (badgeStore.data?.checkInURL) {
-        return <Redirect href={"/ticket"} />;
+        return (
+            <View testID='app.home.redirect'>
+                <Redirect href={"/ticket"} />
+            </View>
+        );
     }
 
     return (
@@ -24,10 +28,11 @@ export default function Home() {
                 source={require("@assets/logo.png")}
                 className='h-16'
                 resizeMode='contain'
+                testID='app.home.logo-image'
             />
 
             <View className='w-full mt-12 gap-3'>
-                <Input>
+                <Input testID='app.home.code-input'>
                     <MaterialCommunityIcons
                         name='ticket-confirmation-outline'
                         size={20}
@@ -42,13 +47,15 @@ export default function Home() {
                     title='Acessar credencial'
                     onPress={handleAccessCredentials}
                     isLoading={isLoading}
-                    testID='app.button'
+                    testID='app.home.button'
                 />
-                <Link
-                    href='/register'
-                    className='text-gray-100 text-base font-bold text-center mt-8'>
-                    Ainda não possui ingresso?
-                </Link>
+                <View testID='app.home.link'>
+                    <Link
+                        href='/register'
+                        className='text-gray-100 text-base font-bold text-center mt-8'>
+                        Ainda não possui ingresso?
+                    </Link>
+                </View>
             </View>
         </View>
     );

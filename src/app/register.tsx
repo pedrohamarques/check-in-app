@@ -18,10 +18,11 @@ export default function Register() {
                 source={require("@assets/logo.png")}
                 className='h-16'
                 resizeMode='contain'
+                testID='app.register.logo-image'
             />
 
             <View className='w-full mt-12 gap-3'>
-                <Input>
+                <Input testID='app.register.name-input'>
                     <FontAwesome6
                         name='user-circle'
                         size={20}
@@ -32,7 +33,7 @@ export default function Register() {
                         onChangeText={setName}
                     />
                 </Input>
-                <Input>
+                <Input testID='app.register.email-input'>
                     <MaterialIcons
                         name='alternate-email'
                         size={20}
@@ -50,11 +51,13 @@ export default function Register() {
                     testID='app.register.button'
                     isLoading={isLoading}
                 />
-                <Link
-                    href='/'
-                    className='text-gray-100 text-base font-bold text-center mt-8'>
-                    Já possui ingresso?
-                </Link>
+                <View testID='app.register.link-view'>
+                    <Link
+                        href='/'
+                        className='text-gray-100 text-base font-bold text-center mt-8'>
+                        Já possui ingresso?
+                    </Link>
+                </View>
             </View>
         </View>
     );

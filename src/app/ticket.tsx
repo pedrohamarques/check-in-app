@@ -23,7 +23,11 @@ export default function Ticket() {
     } = useTicket();
 
     if (!badgeStore.data?.checkInURL) {
-        return <Redirect href={"/"} />;
+        return (
+            <View testID='app.ticket.redirect'>
+                <Redirect href={"/"} />
+            </View>
+        );
     }
 
     return (
@@ -44,6 +48,7 @@ export default function Ticket() {
                 <MotiView
                     from={{ translateY: 0 }}
                     animate={{ translateY: 10 }}
+                    testID='app.ticket.double-down-image'
                     transition={{ loop: true, type: "timing", duration: 700 }}>
                     <FontAwesome
                         name='angle-double-down'
@@ -77,7 +82,10 @@ export default function Ticket() {
                 </TouchableOpacity>
             </ScrollView>
 
-            <Modal visible={expandQRCode} statusBarTranslucent>
+            <Modal
+                visible={expandQRCode}
+                statusBarTranslucent
+                testID='app.ticket.modal'>
                 <View className='flex-1 bg-green-500 items-center justify-center'>
                     <TouchableOpacity
                         activeOpacity={0.7}
