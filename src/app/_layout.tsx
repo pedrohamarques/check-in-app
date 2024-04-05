@@ -12,6 +12,7 @@ import {
 import { Loading } from "@components/loading";
 
 import "@styles/global.css";
+import { View } from "react-native";
 
 export default function Layout() {
     const [isFontsLoaded] = useFonts({
@@ -25,9 +26,9 @@ export default function Layout() {
     }
 
     return (
-        <>
+        <View testID='app._layout.slot-view'>
             <StatusBar style='light' />
             <Slot />
-        </>
+        </View>
     );
 }
